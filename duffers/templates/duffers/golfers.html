@@ -1,0 +1,26 @@
+{% extends 'duffers/base.html' %}
+{% block content %}
+{% if golfer_list %}
+  <div class="w3-container w3-green">
+	<h4>Golfers</h4>
+  </div>
+  <div class="w3-row">
+   <div class="w3-half w3-container">
+    <table class="w3-table w3-striped">
+    {% for golfer in golfer_list %}
+      <tr> 
+        <td class="w3-align-right"> <a href="/duffers/{{ golfer.id }}/scores_by_golfer"><i class="fa fa-clipboard"></i></a></td>
+        <td>{{ golfer.last_name}}, {{ golfer.first_name}} 
+            {% if golfer.handicap > 0 %}
+                  ({{ golfer.handicap }})
+            {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </table>
+   </div>
+  </div>
+{% else %}
+    <p>No peeps are available.</p>
+{% endif %}
+{% endblock content %}

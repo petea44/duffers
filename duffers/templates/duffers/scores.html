@@ -1,0 +1,71 @@
+{% load mathfilters %}
+{% load golf_tags %}
+{% load static %}
+{% if scores_list %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/golf.css' %}" />
+{{ scores_list }}
+<table cellspacing=0 cellpadding=5>
+
+	{% for scores in scores_list%} {% ifchanged scores.course %}
+	<tr>
+		<td class="crse" colspan="22">{{ scores.course.course_name}} : {{ scores.player }}</th>
+    </tr>
+    <tr style="background-color:#eee">
+     <th></th>
+		<th>{{ scores.course.par1}}</th>
+		<th>{{ scores.course.par2}}</th>
+		<th>{{ scores.course.par3}}</th>
+		<th>{{ scores.course.par4}}</th>
+		<th>{{ scores.course.par5}}</th>
+		<th>{{ scores.course.par6}}</th>
+		<th>{{ scores.course.par7}}</th>
+		<th>{{ scores.course.par8}}</th>
+		<th>{{ scores.course.par9}}</th>
+		<th>{{ scores.course.par_out}}</th>
+		<th>{{ scores.course.par10}}</th>
+		<th>{{ scores.course.par11}}</th>
+		<th>{{ scores.course.par12}}</th>
+		<th>{{ scores.course.par13}}</th>
+		<th>{{ scores.course.par14}}</th>
+		<th>{{ scores.course.par15}}</th>
+		<th>{{ scores.course.par16}}</th>
+		<th>{{ scores.course.par17}}</th>
+		<th>{{ scores.course.par18}}</th>
+		<th>{{ scores.course.par_in}}</th>
+		<th>{{ scores.course.par}}</th>
+	</tr>
+	{% endifchanged %}
+
+	<tr>
+		<td>{{ scores.play_date}}</td> 
+		<td class="scores {% score_color  scores.par1 scores.course.par1%}">{{ scores.par1}}</td>  
+		<td class="scores {% score_color  scores.par2 scores.course.par2%}">{{ scores.par2}}</td>  
+		<td class="scores {% score_color  scores.par3 scores.course.par3%}">{{ scores.par3}}</td>  
+		<td class="scores {% score_color  scores.par4 scores.course.par4%}">{{ scores.par4}}</td>  
+		<td class="scores {% score_color  scores.par5 scores.course.par5%}">{{ scores.par5}}</td>  
+		<td class="scores {% score_color  scores.par6 scores.course.par6%}">{{ scores.par6}}</td>  
+		<td class="scores {% score_color  scores.par7 scores.course.par7%}">{{ scores.par7}}</td>  
+		<td class="scores {% score_color  scores.par8 scores.course.par8%}">{{ scores.par8}}</td>  
+		<td class="scores {% score_color  scores.par9 scores.course.par9%}">{{ scores.par9}}</td>  
+		<td class="scores">{{ scores.par_out}}</td>
+		<td class="scores scores {% score_color  scores.par10 scores.course.par10%}">{{ scores.par10}}</td>  
+        <td class="scores {% score_color  scores.par11 scores.course.par11%}">{{ scores.par11}}</td>  
+		<td class="scores {% score_color  scores.par12 scores.course.par12%}">{{ scores.par12}}</td>  
+		<td class="scores {% score_color  scores.par13 scores.course.par13%}">{{ scores.par13}}</td>  
+		<td class="scores {% score_color  scores.par14 scores.course.par14%}">{{ scores.par14}}</td>  
+		<td class="scores {% score_color  scores.par15 scores.course.par15%}">{{ scores.par15}}</td>  
+		<td class="scores {% score_color  scores.par16 scores.course.par16%}">{{ scores.par16}}</td>  
+		<td class="scores {% score_color  scores.par17 scores.course.par17%}">{{ scores.par17}}</td>  
+		<td class="scores {% score_color  scores.par18 scores.course.par18%}">{{ scores.par18}}</td>  
+		<td class="scores">{{ scores.par_in}}</td>
+		<td class="scores totscore">{{ scores.par}}</td>
+		
+		
+	</tr>
+	{% endfor %}
+</table>
+
+
+{% else %}
+<p>No scores are available.</p>
+{% endif %}

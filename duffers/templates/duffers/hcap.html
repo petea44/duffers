@@ -1,0 +1,13 @@
+{% if hcap_list %}
+
+  {{ crse_ids }} 
+  {{ crse_list }}
+  {{ hcap_list }}
+{% for hcap in hcap_list %}
+
+  {{ hcap.id }} {{ hcap.mypar }} <br>
+ {% endfor %}  
+ {% else %}
+ 
+ oops
+ {% endif %}

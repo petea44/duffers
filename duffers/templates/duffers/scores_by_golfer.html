@@ -1,0 +1,85 @@
+
+{% extends 'duffers/base.html' %}
+{% load mathfilters %}
+{% load golf_tags %}
+{% load static %}
+{% block content %}
+{% if score_list %}
+
+
+
+
+	{% for score in score_list%} 
+	{% ifchanged score.golfer %}
+	<div class="w3-container w3-green">
+	<h4>{{ score.golfer }} 
+	 {% if score.golfer.handicap > 0 %}
+                  {{ score.golfer.handicap }} Handicap
+            {% endif %}
+   </h4>
+	</div>
+	<table class=" w3-table-all w3-small">
+	{% endifchanged %}
+	
+	{% ifchanged score.course %}
+	
+    <tr class="w3-khaki">
+     <th class="w3-center w3-border w3-medium w3-text-green w3-wide">{{ score.course.course_name}}</th>
+		<th class="w3-center w3-border">{{ score.course.par1}}</th>
+		<th class="w3-center w3-border">{{ score.course.par2}}</th>
+		<th class="w3-center w3-border">{{ score.course.par3}}</th>
+		<th class="w3-center w3-border">{{ score.course.par4}}</th>
+		<th class="w3-center w3-border">{{ score.course.par5}}</th>
+		<th class="w3-center w3-border">{{ score.course.par6}}</th>
+		<th class="w3-center w3-border">{{ score.course.par7}}</th>
+		<th class="w3-center w3-border">{{ score.course.par8}}</th>
+		<th class="w3-center w3-border">{{ score.course.par9}}</th>
+		<th class="w3-center w3-border">{{ score.course.par_out}}</th>
+		<th class="w3-center w3-border">{{ score.course.par10}}</th>
+		<th class="w3-center w3-border">{{ score.course.par11}}</th>
+		<th class="w3-center w3-border">{{ score.course.par12}}</th>
+		<th class="w3-center w3-border">{{ score.course.par13}}</th>
+		<th class="w3-center w3-border">{{ score.course.par14}}</th>
+		<th class="w3-center w3-border">{{ score.course.par15}}</th>
+		<th class="w3-center w3-border">{{ score.course.par16}}</th>
+		<th class="w3-center w3-border">{{ score.course.par17}}</th>
+		<th class="w3-center w3-border">{{ score.course.par18}}</th>
+		<th class="w3-center w3-border">{{ score.course.par_in}}</th>
+		<th class="w3-center w3-border">{{ score.course.par}}</th>
+	</tr>
+	{% endifchanged %}
+
+	<tr>
+		<td class="w3-left-align">{{ score.play_date}}</td> 
+		<td class="w3-center w3-border {% score_color  score.par1 score.course.par1%}">{{ score.hcap}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par2 score.course.par2%}">{{ score.par2}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par3 score.course.par3%}">{{ score.par3}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par4 score.course.par4%}">{{ score.par4}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par5 score.course.par5%}">{{ score.par5}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par6 score.course.par6%}">{{ score.par6}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par7 score.course.par7%}">{{ score.par7}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par8 score.course.par8%}">{{ score.par8}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par9 score.course.par9%}">{{ score.par9}}</td>  
+		<td class="w3-center w3-border w3-text-indigo">{{ score.par_out}}</td>
+		<td class="w3-center w3-border score {% score_color  score.par10 score.course.par10%}">{{ score.par10}}</td>  
+        <td class="w3-center w3-border {% score_color  score.par11 score.course.par11%}">{{ score.par11}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par12 score.course.par12%}">{{ score.par12}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par13 score.course.par13%}">{{ score.par13}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par14 score.course.par14%}">{{ score.par14}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par15 score.course.par15%}">{{ score.par15}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par16 score.course.par16%}">{{ score.par16}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par17 score.course.par17%}">{{ score.par17}}</td>  
+		<td class="w3-center w3-border {% score_color  score.par18 score.course.par18%}">{{ score.par18}}</td>  
+		<td class="w3-center w3-border  w3-text-indigo">{{ score.par_in}}</td>
+		<th class="w3-center w3-border w3-border">{{ score.par}}</td>
+		
+		
+	</tr>
+	{% endfor %}
+</table>
+
+
+{% else %}
+<p>No score are available.</p>
+{% endif %}
+{% endblock content %}

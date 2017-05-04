@@ -1,0 +1,40 @@
+{% extends 'duffers/base.html' %}
+{% load static %} 
+{% block content %}
+
+
+
+<div class="w3-row">
+  <div class="w3-half w3-container w3-green w3-small">
+  <h3 w3-text-green> Champions </h3>
+{% if champs_list %}
+
+    <table class="w3-table w3-small">
+    {% for champs in champs_list %}
+      
+        <tr><td class="w3-center">{{ champs.year }}</td><td> {{ champs.golfer.first_name}}, {{ champs.golfer.last_name}}</td></tr>
+       
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No peeps are available.</p>
+{% endif %}
+</table>
+  </div>
+  <div class="w3-half w3-small w3-container w3-yellow">
+  <h3 w3-text-green> Holes-In-One </h3>
+{% if holes_list %}
+
+    <table class="w3-table w3-small">
+    {% for holes in holes_list %}
+      
+         <tr><td>{{ holes.play_date }}</td><td>{{ holes.golfer.first_name}} {{ holes.golfer.last_name}}</td><td>{{ holes.course }} #{{ holes.hole }}</td><td>{{ holes.club }} {{ holes.yards }} yards</td></tr>
+       
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No peeps are available.</p>
+{% endif %}
+ </div>
+</div>
+{% endblock content %}
