@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     
-    
+    <title>The Duffer's Cup</title> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="{% static 'duffers/images/frog.png' %}"/>   
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -31,11 +31,20 @@
 
 
 <div class="w3-content" style="max-width:2000px; padding-top:30px;">
-<div></div>
-<div class="w3-khaki w3-container">
-<h3 class=""><img src="{% static 'duffers/images/frog.png'%}" class="w3-image w3-center w3-animate-opacity" > The Duffer's Cup <img src="{% static 'duffers/images/frog.png'%}" class="w3-image w3-center w3-animate-opacity" >
-</h3></div></div>
-        {% block content %}{% endblock content %}
+<div class="w3-container w3-khaki w3-center w3-border-top w3-border-bottom w3-border-black">
+
+<div class="w3-display-container w3-cell w3-cell-middle w3-padding">
+<img src="{% static 'duffers/images/frog.png'%}" class="w3-image">
+</div>
+
+<div class="w3-display-container w3-cell w3-xlarge w3-text-green w3-cell-middle w3-padding" style="text-shadow:1px 1px 0 #222">
+ The Duffer's Cup
+</div>
+
+<div class="w3-display-container w3-cell w3-cell-middle w3-padding">
+<img src="{% static 'duffers/images/frog.png'%}" class="w3-image">
+</div>
+ </div>       {% block content %}{% endblock content %}
        
     </div>
 </body>

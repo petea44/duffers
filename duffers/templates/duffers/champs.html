@@ -5,11 +5,11 @@
 
 
 <div class="w3-row">
-  <div class="w3-half w3-container  w3-small">
-  <h3 class="w3-green"> Champions </h3>
+  <div class="w3-half w3-container  w3-small w3-yellow">
+  <h4> Champions </h4>
 {% if champs_list %}
 
-    <table class="w3-table w3-small w3-striped w3-mobile">
+    <table class="w3-table w3-small w3-bordered w3-mobile">
     {% for champs in champs_list %}
       
         <tr><td class="w3-left" width="10%">{{ champs.year }}</td><td> {{ champs.golfer.first_name}}, {{ champs.golfer.last_name}}</td></tr>
@@ -21,11 +21,11 @@
 {% endif %}
 </table>
   </div>
-  <div class="w3-half w3-small w3-container">
-  <h3 class="w3-yellow"> Holes-In-One </h3>
+  <div class="w3-half  w3-container w3-green">
+  <h4> Holes-In-One </h4>
 {% if holes_list %}
 
-    <table class="w3-table w3-small w3-striped w3-mobile">
+    <table class="w3-table w3-small w3-bordered w3-mobile">
     {% for holes in holes_list %}
       
          <tr><td>{{ holes.play_date }}</td><td>{{ holes.golfer.first_name}} {{ holes.golfer.last_name}}</td><td>{{ holes.course }} #{{ holes.hole }}</td><td>{{ holes.club }} {{ holes.yards }} yards</td></tr>
@@ -35,6 +35,6 @@
 {% else %}
     <p>No peeps are available.</p>
 {% endif %}
- </div>
+</div>
 </div>
 {% endblock content %}
