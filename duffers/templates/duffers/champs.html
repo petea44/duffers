@@ -2,14 +2,17 @@
 {% load static %} 
 {% block content %}
 
-
-
+<div class="w3-row w3-green">
+ <div class="w3-padding"><h4>Duffer's Cup Records</h4></div>
+</div>
 <div class="w3-row">
-  <div class="w3-half w3-container  w3-small w3-yellow">
-  <h4> Champions </h4>
+<div class="w3-half w3-container w3-small">
+ <h4 class="w3-yellow w3-padding"> Champions </h4>
+   <div class="w3-white w3-container  w3-small">
+ 
 {% if champs_list %}
 
-    <table class="w3-table w3-small w3-bordered w3-mobile">
+    <table class="w3-table w3-small  w3-bordered  w3-mobile">
     {% for champs in champs_list %}
       
         <tr><td class="w3-left" width="10%">{{ champs.year }}</td><td> {{ champs.golfer.first_name}}, {{ champs.golfer.last_name}}</td></tr>
@@ -21,11 +24,13 @@
 {% endif %}
 </table>
   </div>
-  <div class="w3-half  w3-container w3-green">
-  <h4> Holes-In-One </h4>
-{% if holes_list %}
+</div> 
+<div class="w3-half w3-container  w3-small">
+ <h4 class="w3-blue w3-padding"> Holes-In-One </h4>
+  <div class="w3-white w3-container  w3-small">
+  {% if holes_list %}
 
-    <table class="w3-table w3-small w3-bordered w3-mobile">
+    <table class="w3-table w3-small w3-bordered  w3-mobile">
     {% for holes in holes_list %}
       
          <tr><td>{{ holes.play_date }}</td><td>{{ holes.golfer.first_name}} {{ holes.golfer.last_name}}</td><td>{{ holes.course }} #{{ holes.hole }}</td><td>{{ holes.club }} {{ holes.yards }} yards</td></tr>
@@ -35,6 +40,7 @@
 {% else %}
     <p>No peeps are available.</p>
 {% endif %}
-</div>
-</div>
+ </div>
+ </div>
+ </div>
 {% endblock content %}

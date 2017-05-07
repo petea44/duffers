@@ -1,4 +1,5 @@
 {% extends 'duffers/base.html' %}
+{% load static %}
 {% block content %}
 {% if golfer_list %}
   <div class="w3-container w3-green w3-border-bottom w3-border-black">
@@ -18,7 +19,11 @@
       </tr>
     {% endfor %}
     </table>
+  
    </div>
+       <div class="w3-half w3-container w3-hide-small">
+    <img src="{% static 'duffers/images/golfers.jpg'%}" class="w3-image w3-margin w3-round ">
+    </div>
   </div>
 {% else %}
     <p>No peeps are available.</p>
