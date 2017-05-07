@@ -77,7 +77,7 @@ def handicap(request):
 
 def avg_to_par(request):
     golfer_list = Golfer.objects.order_by('last_name', 'first_name')
-    template = loader.get_template('duffers/avg.html')
+    template = loader.get_template('duffers/golfers.html')
     for  golfers in golfer_list:
         the_par = 2
         while the_par < 5:
@@ -183,7 +183,7 @@ def avg_to_par(request):
         GolferStats.objects.create(golfer_id=golfers.id, par3_avg=par3_value, par4_avg=par4_value, par5_avg=par5_value)
            
     context = {
-        'hole_cnt': hole_cnt,
+        'golfer_list': golfer_list,
         'stroke_sum': stroke_sum,
     }    
     return HttpResponse(template.render(context, request))           
