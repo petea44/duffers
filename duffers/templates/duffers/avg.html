@@ -1,0 +1,10 @@
+{% load mathfilters %}
+{% for avg in avg_list %}
+
+{{avg.course}} {{ avg.par__avg }}  <br>
+
+{% endfor%}
+
+
+{{ the_answer }} {{ stroke_sum|div:hole_cnt }} {{ hole_cnt }} <br>
+{{ the_answer.float }}

@@ -8,25 +8,34 @@
 	{% for scores in score_list%} 
 	  {% ifchanged scores.golfer %}
 	       <div class="w3-row w3-border-bottom w3-border-black">
-	       <div class="w3-half w3-container w3-green ">
-	         <h4>{{ scores.golfer }} 
+	       <div class="w3-half w3-container w3-green w3-medium ">
+	      
+	         {{ scores.golfer }} 
 	            {% if scores.golfer.handicap > 0 %}
                   (Handicap:  {{ scores.golfer.handicap }})
                 {% endif %}
-              </h4>
+             <div class="w3-small w3-text-yellow">
+              {% for averages in avg_list %}
+	         Par 3 Average: {{averages.par3_avg|floatformat:"2"}}
+	         | Par 4 Average: {{averages.par4_avg|floatformat:"2"}}
+	         | Par 5 Average: {{averages.par5_avg|floatformat:"2"}}
+	        {%endfor%}
+	        
+            </div>
              </div> 
-             <div class="w3-half w3-container w3-hide-small" style="padding-top:5px; padding-bottom:3px;">
+             <div class="w3-half w3-container w3-hide-small" style="padding-top:1px; padding-bottom:1px;">
                <table class="w3-table" >
                 <tr>
-                  <td class="{% score_color 4 3%}" width="20%">Bogey</td>
-                  <td class="{% score_color 3 3 %}" width="20%">Par</td>
-                  <td class="{% score_color 2 3%}" width="20%">Birdie</td>
-                  <td class="{% score_color 2 4 %}" width="20%">Eagle</td>
-                  <td class="{% score_color 1 4 %}" width="20%">One!</td>
+                  <td class="{% score_color 4 3%} w3-center" width="20%">Bogey</td>
+                  <td class="{% score_color 3 3 %} w3-center" width="20%">Par</td>
+                  <td class="{% score_color 2 3%} w3-center" width="20%">Birdie</td>
+                  <td class="{% score_color 2 4 %} w3-center" width="20%">Eagle</td>
+                  <td class="{% score_color 1 4 %} w3-center" width="20%">One!</td>
                 </tr> 
                </table>
                </div>
 	       </div>
+	       
 	  	   <table class="w3-table w3-bordered w3-border-black w3-small">
       {% endifchanged %}
      
