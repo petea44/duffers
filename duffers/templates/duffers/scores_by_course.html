@@ -27,9 +27,9 @@
                </table>
                </div>
 	       </div>
-	       <table class=" w3-table w3-bordered w3-small">
-    <tr class="w3-khaki">
-     <th class="w3-center w3-right w3-text-green">Yards<br>Par</th>
+	       <table class=" w3-table w3-bordered w3-border-black w3-small">
+    <tr class="w3-khaki w3-border-bottom w3-border-black">
+     <th class="w3-right w3-border-right w3-border-black w3-text-green ">Yards<br>Par</th>
 		<th class="w3-center w3-border-left w3-hide-small">{{ scores.course.yards1}}<br>{{ scores.course.par1}}</th>
 		<th class="w3-center w3-border-left w3-hide-small">{{ scores.course.yards2}}<br>{{ scores.course.par2}}</th>
 		<th class="w3-center w3-border-left w3-hide-small">{{ scores.course.yards3}}<br>{{ scores.course.par3}}</th>
@@ -54,27 +54,27 @@
 	</tr>
 	{% endifchanged %}
 
-	<tr class=" w3-hover-khaki">
-		<td class="w3-left-align">{{ scores.golfer }} : {{ scores.play_date}}</td>
-		<td class="w3-center w3-hide-small {% score_color  scores.par1 scores.course.par1%}">{{ scores.par1}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par2 scores.course.par2%}">{{ scores.par2}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par3 scores.course.par3%}">{{ scores.par3}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par4 scores.course.par4%}">{{ scores.par4}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par5 scores.course.par5%}">{{ scores.par5}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par6 scores.course.par6%}">{{ scores.par6}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par7 scores.course.par7%}">{{ scores.par7}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par8 scores.course.par8%}">{{ scores.par8}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par9 scores.course.par9%}">{{ scores.par9}}</td>  
+	<tr class="w3-border w3-border-black">
+		<td class="w3-left-align w3-border-right w3-border-black">{{ scores.golfer }} : {{ scores.play_date}}</td>
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par1 scores.course.par1%}">{{ scores.par1}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par2 scores.course.par2%}">{{ scores.par2}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par3 scores.course.par3%}">{{ scores.par3}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par4 scores.course.par4%}">{{ scores.par4}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par5 scores.course.par5%}">{{ scores.par5}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par6 scores.course.par6%}">{{ scores.par6}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par7 scores.course.par7%}">{{ scores.par7}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par8 scores.course.par8%}">{{ scores.par8}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par9 scores.course.par9%}">{{ scores.par9}}</td>  
 		<td class="w3-center w3-border w3-border-black  w3-light-gray w3-text-indigo">{{ scores.par_out}}</td>
-		<td class="w3-center w3-hide-small {% score_color  scores.par10 scores.course.par10%}">{{ scores.par10}}</td>  
-        <td class="w3-center w3-hide-small {% score_color  scores.par11 scores.course.par11%}">{{ scores.par11}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par12 scores.course.par12%}">{{ scores.par12}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par13 scores.course.par13%}">{{ scores.par13}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par14 scores.course.par14%}">{{ scores.par14}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par15 scores.course.par15%}">{{ scores.par15}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par16 scores.course.par16%}">{{ scores.par16}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par17 scores.course.par17%}">{{ scores.par17}}</td>  
-		<td class="w3-center w3-hide-small {% score_color  scores.par18 scores.course.par18%}">{{ scores.par18}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par10 scores.course.par10%}">{{ scores.par10}}</td>  
+        <td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par11 scores.course.par11%}">{{ scores.par11}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par12 scores.course.par12%}">{{ scores.par12}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par13 scores.course.par13%}">{{ scores.par13}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par14 scores.course.par14%}">{{ scores.par14}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par15 scores.course.par15%}">{{ scores.par15}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par16 scores.course.par16%}">{{ scores.par16}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par17 scores.course.par17%}">{{ scores.par17}}</td>  
+		<td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par18 scores.course.par18%}">{{ scores.par18}}</td>  
 		<td class="w3-center w3-border w3-border-black  w3-light-gray w3-text-indigo">{{ scores.par_in}}</td>
 		<th class="w3-center w3-border w3-border-black w3-light-gray w3-text-indigo">{{ scores.par}}</th>
 		
