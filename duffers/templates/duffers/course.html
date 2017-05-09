@@ -1,29 +1,29 @@
-{% extends 'duffers/base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'duffers/base.html' %} {% load static %} {% block content %}
 {% if course_list %}
-<div class="w3-container w3-green w3-border-bottom w3-border-black">
-	<h4>Courses</h4>
+<div class="w3-container w3-green w3-padding w3-border-bottom  w3-large w3-border-black">
+	Courses
+</div>
+<div class="w3-row">
+	<div class="w3-half w3-container">
+		<table class="w3-table w3-striped">
+			{% for course in course_list %}
+			<tr>
+				<td class="w3-align-right">
+				   <a href="/duffers/{{course.id}}/scores_by_course">  <i class="fa fa-pencil-square-o"></i></a>
+				</td>
+				<td>
+				  {{ course.course_name}}, {{ course.address}}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
 	</div>
-        <div class="w3-row">
-  <div class="w3-half w3-container">
-    <table class="w3-table w3-striped">
-    <table  class="w3-table w3-striped">
-    {% for course in course_list %}
-         <tr> <td class="w3-align-right"> 
-         <a href="/duffers/{{course.id}}/scores_by_course"><i class="fa fa-clipboard"></i></a></td>
-         <td>{{ course.course_name}}, {{ course.address}}</td>
-        </tr>
-    {% endfor %}
-    </table>
-    </div>
-    
-    <div class="w3-half w3-container w3-hide-small">
-    <img src="{% static 'duffers/images/courses.jpg'%}" class="w3-image w3-margin w3-round ">
-    </div>
-     
-    </div>
+
+	<div class="w3-half w3-container w3-hide-small">
+		<img src="{% static 'duffers/images/courses.jpg'%}"
+			class="w3-image w3-margin w3-round" width=450>
+	</div>
+</div>
 {% else %}
-    <p>No courses are available.</p>
-{% endif %}
-{% endblock content %} 
+<p>No courses are available.</p>
+{% endif %} {% endblock content %}

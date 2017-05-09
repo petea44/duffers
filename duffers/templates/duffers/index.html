@@ -1,13 +1,48 @@
 {% extends 'duffers/base.html' %}
 {% load static %} 
 {% block content %}
-<div class="w3-row w3-display-container ">
 
-<div class="w3-container w3-half  w3-display-container  w3-hide-small">
-<img src="{% static 'duffers/images/theboys.jpg'%}" class="w3-image  w3-center w3-circle w3-animate-opacity" >
+<style>
+.mySlides {display:none;}
+</style>
+<body>
+<div class="w3-container w3-cell w3-mobile">
+  <img class="mySlides w3-image w3-circle" src="{% static 'duffers/images/theboys.jpg'%}">
+  <img class="mySlides w3-image" src="{% static 'duffers/images/duffers.jpg'%}" >
 </div>
-  <div class="w3-container w3-half w3-display-container ">
-<img src="{% static 'duffers/images/duffers.jpg'%}" class="w3-image w3-center w3-animate-opacity" >
+<div class="w3-container w3-cell w3-cell-middle w3-mobile w3-text-green" style="max-width:500px;">
+ <div class="w3-large w3-text-black w3-center w3-large">The Duffer's Cup</div>
+Participating in the Duffer's Cup are some of the greatest to ever play the game. Each year a 
+ferocious competition occurs on the courses of Central New York culminating in a winner takes all 
+tournament. The winner  takes ownership of a beautiful trophy for a year along with the Green Jacket. 
+The trophy is awarded at a lavish banquet at one of the local restaurants. Participants are also eligible 
+for a mid-winter golf excursion to Orland Florida!
 </div>
-</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000); // Change image every 2 seconds
+}
+</script>
+
+
+<!-- <div class="w3-row w3-display-container "> -->
+<!-- <div class="w3-container w3-half  w3-display-container  w3-hide-small"> -->
+<!-- <img src="{% static 'duffers/images/theboys.jpg'%}" class="w3-image  w3-center w3-circle w3-animate-opacity" > -->
+<!-- </div> -->
+<!--   <div class="w3-container w3-half w3-display-container "> -->
+<!-- <img src="{% static 'duffers/images/duffers.jpg'%}" class="w3-image w3-center w3-animate-opacity" > -->
+<!-- </div> -->
+<!-- </div> -->
 {% endblock content %}
