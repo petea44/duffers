@@ -2,14 +2,18 @@
 from __future__ import unicode_literals
 from duffers.models import Course, Golfer, Score, GolferStats
 from django.template import loader
+from django.contrib.contenttypes.views import shortcut
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from django.conf import settings
 from django.db.models import Avg, Count, Sum
 
 from maint.forms import HolesForm, ScoreForm
 # from duffers.views import avg_to_par
 # Create your views here.
 def enter_score(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     form1 = ScoreForm()
     form2 = HolesForm()
     template = loader.get_template('maint/enterScores.html')
@@ -20,6 +24,8 @@ def enter_score(request):
     return HttpResponse(template.render(context, request))
 
 def post_score(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     Score.objects.create(golfer_id=request.POST['golfer'],
                          course_id=request.POST['course'],
                          play_date=request.POST['play_date'],
@@ -71,6 +77,8 @@ def post_score(request):
 
 
 def handicap(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     golfer_list =Golfer.objects.order_by('last_name','first_name')
     template = loader.get_template('duffers/golfers.html')
     for golfers in golfer_list:
@@ -94,6 +102,8 @@ def handicap(request):
 
 
 def avg_to_par(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     golfer_list = Golfer.objects.order_by('last_name', 'first_name')
     template = loader.get_template('duffers/golfers.html')
     for  golfers in golfer_list:
