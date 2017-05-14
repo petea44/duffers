@@ -1,0 +1,22 @@
+{% extends 'duffers/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="w3-row">
+  <div class="w3-container w3-green w3-padding w3-border-bottom  w3-large w3-border-black">
+	Login
+</div>
+<div class="w3-container w3-small w3-third ">
+  <form method="post" class="w3-form w3-padding">
+  <table class="w3-table">
+    {% csrf_token %}
+    {{ form.as_table }}
+  </form>
+  <tr>
+  <td></td>
+   <td class="w3-right"><button type="submit" class="w3-input w3-border w3-round-large w3-blue">Login</button></td></tr>
+ </table>
+  </div>  
+ </div> 
+{% endblock %}
