@@ -1,0 +1,102 @@
+{% extends 'maint/base.html' %}
+{% block head %}
+ <script type="text/javascript"> 
+ function ck_it()
+  {
+  front_score = front();
+  back_score = back();
+  if (window.confirm("look ok?" +  "\nFront = " + front_score + "\nBack=" + back_score)) {
+      document.getElementById('submit').disabled=false;
+      document.getElementById('par_in').disabled=false;
+      document.getElementById('par_out').disabled=false;
+      document.getElementById('par').value=front_score+back_score;
+  }   
+      else
+    	  document.getElementById('submit').disabled=true
+  }
+ function front() {
+	var x = Number(document.getElementById('id_par1').value) 
+	        + Number(document.getElementById('id_par2').value) 
+	        + Number(document.getElementById('id_par3').value) 
+	        + Number(document.getElementById('id_par4').value) 
+	        + Number(document.getElementById('id_par5').value) 
+	        + Number(document.getElementById('id_par6').value)  
+	        + Number(document.getElementById('id_par7').value) 
+	        + Number(document.getElementById('id_par8').value) 
+	        + Number(document.getElementById('id_par9').value);
+   document.getElementById('par_out').value=x;
+   return x;
+   }
+ function back() {
+		var x = Number(document.getElementById('id_par11').value) 
+		        + Number(document.getElementById('id_par12').value) 
+		        + Number(document.getElementById('id_par13').value) 
+		        + Number(document.getElementById('id_par14').value) 
+		        + Number(document.getElementById('id_par15').value) 
+		        + Number(document.getElementById('id_par16').value)  
+		        + Number(document.getElementById('id_par17').value) 
+		        + Number(document.getElementById('id_par18').value) 
+		        + Number(document.getElementById('id_par10').value);
+	   document.getElementById('par_in').value=x;
+	   return x;
+	   }
+</script>
+
+{% endblock head %}
+{% block content %}
+<div class="w3-container w3-small w3-half">
+<h4>Score Entry</h4> {{ mymesg }}
+ <form action="{% url 'maint:post_score' %}" method="post">
+{% csrf_token %}
+<table>
+{{ form1.as_table }}
+
+ </table>
+ 
+
+<table class="w3-table w3-striped">
+ <tr>
+  {% for x in 123456789|make_list %}
+    <th class="w3-center">{{ x }}</th>
+  {% endfor %}
+    <th class="w3-center">Out</th>
+  </tr>
+  <tr>  
+  <td class="w3-center">{{ form2.par1 }}</td> 
+  <td class="w3-center">{{ form2.par2 }}</td> 
+  <td class="w3-center">{{ form2.par3 }}</td> 
+  <td class="w3-center">{{ form2.par4 }}</td> 
+  <td class="w3-center">{{ form2.par5 }}</td> 
+  <td class="w3-center">{{ form2.par6 }}</td> 
+  <td class="w3-center">{{ form2.par7 }}</td> 
+  <td class="w3-center">{{ form2.par8 }}</td> 
+  <td class="w3-center">{{ form2.par9 }}</td> 
+  <td class="w3-center w3-gray"><input type="text" name="par_out" id="par_out" size="4" disabled>
+</tr>
+<tr>
+<th class="w3-center">10</th>
+  {% for x in 12345678|make_list %}
+    <th class="w3-center">1{{ x }}</th>
+  {% endfor %}
+  <th class="w3-center">In</th>
+    </tr>
+  <tr>  
+  
+  <td class="w3-center">{{ form2.par10 }}</td> 
+  <td class="w3-center">{{ form2.par11 }}</td> 
+  <td class="w3-center">{{ form2.par12 }}</td> 
+  <td class="w3-center">{{ form2.par13 }}</td> 
+  <td class="w3-center">{{ form2.par14 }}</td> 
+  <td class="w3-center">{{ form2.par15 }}</td> 
+  <td class="w3-center">{{ form2.par16 }}</td> 
+  <td class="w3-center">{{ form2.par17 }}</td> 
+  <td class="w3-center">{{ form2.par18 }}</td> 
+<td class="w3-center w3-gray"><input type="text" name="par_in" id="par_in" size="4" disabled>
+</tr>
+</table>
+<input type="hidden" name="par" id="par" size="4">
+<input type="submit" value="Submit" disabled id="submit" />
+</form>
+<button onClick="ck_it()">Add Scores</button>
+</div>
+{% endblock content %}

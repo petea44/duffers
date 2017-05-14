@@ -1,0 +1,70 @@
+ <script type="text/javascript"> 
+ 
+ function front() {
+	var x = Number(document.getElementById('h1').value) 
+	        + Number(document.getElementById('h2').value) 
+	        + Number(document.getElementById('h3').value) 
+	        + Number(document.getElementById('h4').value) 
+	        + Number(document.getElementById('h5').value) 
+	        + Number(document.getElementById('h6').value)  
+	        + Number(document.getElementById('h7').value) 
+	        + Number(document.getElementById('h8').value) 
+	        + Number(document.getElementById('h9').value);
+   document.getElementById('in').value=x;
+   }
+ function back() {
+		var x = Number(document.getElementById('h11').value) 
+		        + Number(document.getElementById('h12').value) 
+		        + Number(document.getElementById('h13').value) 
+		        + Number(document.getElementById('h14').value) 
+		        + Number(document.getElementById('h15').value) 
+		        + Number(document.getElementById('h16').value)  
+		        + Number(document.getElementById('h17').value) 
+		        + Number(document.getElementById('h18').value) 
+		        + Number(document.getElementById('h10').value);
+	   document.getElementById('out').value=x;
+	   }
+</script>
+
+ <form action="{% url 'duffers:vote' %}" method="post">
+{% csrf_token %}
+ <select name="course" >
+{% for course in course_list %}
+   <option value="{{ course.id }}">{{ course.course_name }}</option>
+{% endfor %}
+</select>
+<br>
+ <select name="golfer" >
+{% for golfer in golfer_list %}
+   <option value="{{ golfer.id }}">{{ golfer.first_name }} {{ golfer.last_name }}</option>
+{% endfor %}
+</select>
+<table class="w3-table">
+ <tr>
+  {% for x in 123456789|make_list %}
+    <th>{{ x }}</th>
+  {% endfor %}
+  </tr><tr>  
+{% for i in 123456789|make_list %}
+   <td><input type="text" name="hole{{ i }}" id="h{{ i }}" onchange="front()" size="2" maxlength="1"></td>
+{% endfor %}
+  <td><input type="text" name="in" id="in">
+</tr>
+<tr>
+<th>10</th>
+  {% for x in 12345678|make_list %}
+    <th>1{{ x }}</th>
+  {% endfor %}
+  </tr><tr>  
+  <td><input type="text" name="hole10" id="h10" size="2" maxlength="1" onchange="back()"></td>
+{% for i in 12345678|make_list %}
+   <td><input type="text" name="hole1{{ i }}"  id="h1{{ i }}" size="2" maxlength="1" onchange="back()"></td>
+{% endfor %}
+<td><input type="text" name="in" id="out" disabled>
+</tr>
+</table>
+
+
+<input type="submit" value="Vote" />
+{{ now }}
+</form>

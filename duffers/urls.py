@@ -6,10 +6,7 @@ urlpatterns = [
     # ex: /polls/
     url(r'^$', views.index, name='index'),
     url(r'^courses/$', views.courses, name='courses'),
-    url(r'^avg_to_par/$', views.avg_to_par, name='avg_to_par'),
-    url(r'^avg_test/$', views.avg_test, name='avg_test'),
     url(r'^golfers/$', views.golfers, name='golfers'),
-    url(r'^handicap/$', views.handicap, name='handicap'),
     url(r'^champs/$', views.champs, name='champs'),
     url(r'^(?P<my_golfer>[0-9]+)/scores_by_golfer/$',views.scores_by_golfer, name='scores_by_golfer'),
     url(r'^(?P<my_course>[0-9]+)/scores_by_course/$',views.scores_by_course, name='scores_by_course'),

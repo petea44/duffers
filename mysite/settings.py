@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*',]
 INSTALLED_APPS = (
     'mathfilters',
     'duffers.apps.DuffersConfig',
+    'maint.apps.MaintConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
