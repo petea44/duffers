@@ -1,16 +1,26 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from duffers.models import Course, Golfer, Score, GolferStats
-from django.template import loader
+from django.template import loader, RequestContext
 from django.contrib.contenttypes.views import shortcut
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, render_to_response
+from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.db.models import Avg, Count, Sum
-
+from django.contrib.auth import authenticate, login, logout
 from maint.forms import HolesForm, ScoreForm
 # from duffers.views import avg_to_par
 # Create your views here.
+
+def index(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    template = loader.get_template('duffers/index.html')
+    context = {
+        'dummy' : 'dummy',
+    }
+    return HttpResponse(template.render(context,request))
+
 def enter_score(request):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))

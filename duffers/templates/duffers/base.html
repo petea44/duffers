@@ -1,4 +1,6 @@
 {% load static %} 
+
+{% load golf_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,20 +35,35 @@ function w3_close() {
     <a href="/duffers/golfers" class="w3-bar-item w3-button w3-padding-small">Golfers</a>
     <a href="/duffers/courses" class="w3-bar-item w3-button w3-padding-small">Courses</a>
     <a href="/duffers/champs" class="w3-bar-item w3-button w3-padding-small">Champions</a>
+    {% if user.is_authenticated %}
+    <a href="/maint/enter_score" class="w3-bar-item w3-button w3-padding-small">Enter Scores</a>
+     <a href="/maint/logout" class="w3-bar-item w3-button w3-padding-small w3-right"><i class="fa fa-unlock-alt"></i></a> 
+     {% else %}
+    <a href="/maint" class="w3-bar-item w3-button w3-padding-small w3-right"><i class="fa fa-lock"></i></a>
+    {% endif %}
   </div>
  </div> 
   <!-- Sidebar -->
 <div class="w3-top  w3-hide-medium w3-hide-large">
- <div class="w3-sidebar w3-bar-block w3-border-right " style="display:none; max-width:120px;" id="mySidebar">
+ <div class="w3-sidebar w3-bar-block w3-border-right " style="display:none; max-width:140px;" id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item ">Close &times;</button>
   <a href="/duffers" class="w3-bar-item w3-button">Home</a>
   <a href="/duffers/golfers" class="w3-bar-item w3-button">Golfers</a>
   <a href="/duffers/courses" class="w3-bar-item w3-button">Courses</a>
   <a href="/duffers/champs" class="w3-bar-item w3-button">Champions</a>
+  {% if user.is_authenticated %}
+    <a href="/maint/enter_score" class="w3-bar-item w3-button">Enter Score</a>
+  {% endif%}  
  </div>
  <div class="w3-teal">
   <button class="w3-button w3-teal " onclick="w3_open()">☰</button> <i>The Finest Golfers in the World</i>
+  {% if user.is_authenticated %}
+  <a href="/maint/logout" class="w3-right w3-button"><i class="fa fa-unlock"></i></a>
+ {% else %} 
+ <a href="/maint" class="w3-right w3-button"><i class="fa fa-lock"></i></a>
+ {% endif %}  
  </div>
+ 
  </div>
 
 
@@ -69,7 +86,9 @@ function w3_close() {
 <img src="{% static 'duffers/images/frog.png'%}" class="w3-image">
 </div>
  </div>       {% block content %}{% endblock content %}
-       
  </div>
+ <p></p>
+ <div class="w3-container w3-green w3-tiny"><div class="w3-right">Version {% the_version %}</div></div>      
+ 
 </body>
 </html>

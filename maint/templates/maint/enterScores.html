@@ -1,5 +1,6 @@
-{% extends 'maint/base.html' %}
-{% block head %}
+{% extends 'duffers/base.html' %}
+
+{% block content %}
  <script type="text/javascript"> 
  function ck_it()
   {
@@ -42,25 +43,29 @@
 	   }
 </script>
 
-{% endblock head %}
-{% block content %}
+
+ <div class="w3-container w3-green w3-padding w3-border-bottom  w3-large w3-border-black">
+	Score Entry
+</div>
+<div CLASS="w3-row">
 <div class="w3-container w3-small w3-half">
-<h4>Score Entry</h4> {{ mymesg }}
  <form action="{% url 'maint:post_score' %}" method="post">
 {% csrf_token %}
-<table>
+<table class="w3-table w3-padding">
 {{ form1.as_table }}
 
  </table>
  
 
-<table class="w3-table w3-striped">
+<table class="w3-table w3-striped w3-bordered w3-padding">
+ <thead>
  <tr>
   {% for x in 123456789|make_list %}
-    <th class="w3-center">{{ x }}</th>
+    <th class="w3-center w3-light-gray">{{ x }}</th>
   {% endfor %}
-    <th class="w3-center">Out</th>
+    <th class="w3-center  w3-light-gray">Out</th>
   </tr>
+  </thead>
   <tr>  
   <td class="w3-center">{{ form2.par1 }}</td> 
   <td class="w3-center">{{ form2.par2 }}</td> 
@@ -98,5 +103,6 @@
 <input type="submit" value="Submit" disabled id="submit" />
 </form>
 <button onClick="ck_it()">Add Scores</button>
+</div>
 </div>
 {% endblock content %}

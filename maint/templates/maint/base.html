@@ -1,4 +1,6 @@
 {% load static %} 
+{% load golf_tags %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +33,8 @@ function w3_close() {
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-hide-small w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="/duffers" class="w3-bar-item w3-button w3-padding-small"><i class="fa fa-home"></i></a>
     <a href="/maint/enter_score" class="w3-bar-item w3-button w3-padding-small">Scores</a>
-    <a href="/duffers/courses" class="w3-bar-item w3-button w3-padding-small">Courses</a>
-    <a href="/duffers/champs" class="w3-bar-item w3-button w3-padding-small">Champions</a>
+   
+     <a href="/maint/logout" class="w3-bar-item w3-button w3-padding-small w3-right"><i class="fa fa-unlock-alt"></i></a> 
   </div>
  </div> 
   <!-- Sidebar -->
@@ -43,6 +45,8 @@ function w3_close() {
   <a href="/duffers/golfers" class="w3-bar-item w3-button">Golfers</a>
   <a href="/duffers/courses" class="w3-bar-item w3-button">Courses</a>
   <a href="/duffers/champs" class="w3-bar-item w3-button">Champions</a>
+  
+   
  </div>
  <div class="w3-teal">
   <button class="w3-button w3-teal " onclick="w3_open()">☰</button> <i>The Finest Golfers in the World</i>
@@ -69,7 +73,9 @@ function w3_close() {
 </div>
  </div> 
        {% block content %}{% endblock content %}
-       
- </div>
+  </div>
+  </div>
+  <p/>
+ <div class="w3-container w3-green w3-tiny"><div class="w3-right">Version {% the_version %}</div></div>      
 </body>
 </html>

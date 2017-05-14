@@ -9,6 +9,9 @@ def cutit(value, arg):
     return arg
 
 @register.simple_tag
+def the_version():
+    return "2017.05.14"
+@register.simple_tag
 def score_color(ppar, cpar):
     """ set color for scores based on birdy, par, bogey """
     if ppar == 1:

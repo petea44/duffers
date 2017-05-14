@@ -10,7 +10,10 @@ from duffers.forms import NameForm
 
 def index(request):
     template = loader.get_template('duffers/index.html')
-    return HttpResponse(template.render())
+    context = {
+        'dummy': 'dummy',
+    }
+    return HttpResponse(template.render(context,request))
 
 
 
