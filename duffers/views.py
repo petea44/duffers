@@ -34,7 +34,7 @@ def courses(request):
     return HttpResponse(template.render(context, request))
 
 def scores_by_golfer(request,my_golfer):
-    score_list = Score.objects.filter(golfer_id=my_golfer).order_by('course','golfer','play_date')
+    score_list = Score.objects.filter(golfer_id=my_golfer).order_by('course','golfer','-play_date')
     avg_list = GolferStats.objects.filter(golfer_id=my_golfer)
     template = loader.get_template('duffers/scores_by_golfer.html')
     context = {
@@ -44,7 +44,7 @@ def scores_by_golfer(request,my_golfer):
     return HttpResponse(template.render(context, request))
 
 def scores_by_course(request,my_course):
-    scores_list = Score.objects.filter(course_id=my_course).order_by('course','golfer','play_date')
+    scores_list = Score.objects.filter(course_id=my_course).order_by('-play_date','golfer')
     template = loader.get_template('duffers/scores_by_course.html')
     context = {
         'scores_list': scores_list,
