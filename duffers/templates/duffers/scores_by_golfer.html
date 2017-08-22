@@ -4,6 +4,7 @@
 {% load golf_tags %}
 {% load static %}
 {% block content %}
+<style> .Y {color:green; font-weight:bolder;}</style>
 {% if score_list %}
 	{% for scores in score_list%} 
 	  {% ifchanged scores.golfer %}
@@ -66,7 +67,11 @@
 	        
 	 {% endifchanged %}
             <tr class="w3-border-bottom w3-border-black">
-		      <td class="w3-left-align w3-border-right w3-border-black">{{ scores.play_date}}</td> 
+		      <td class="w3-left-align w3-border-right w3-border-black {{ scores.hcap  }} ">{{ scores.play_date}} 
+		      
+		      
+		      
+		      </td> 
 		      <td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par1 scores.course.par1%}">{{ scores.par1}}</td>  
 		      <td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par2 scores.course.par2%}">{{ scores.par2}}</td>  
 		      <td class="w3-center w3-hide-small w3-border-left {% score_color  scores.par3 scores.course.par3%}">{{ scores.par3}}</td>  
