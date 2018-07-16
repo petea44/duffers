@@ -10,9 +10,12 @@
 		<table class="w3-table w3-striped">
 			{% for golfer in golfer_list %}
 			<tr>
-				<td class="w3-align-right"><a
+				<td class="w3-align-right" style="max-width:10px;"><a
 					href="/duffers/{{ golfer.id }}/scores_by_golfer"><i
-						class="fa fa-pencil-square-o"></i></a></td>
+						class="fa fa-vcard-o"></i></a></td>
+				<td class="w3-align-right" style="max-width:10px;"><a
+					href="/duffers/{{ golfer.id }}/hcap_by_golfer"><i
+						class="fa fa-filter"></i></a></td>		
 				<td>{{ golfer.last_name}}, {{ golfer.first_name}} 
 				{% if golfer.handicap > 0 %} 
 				    ({{ golfer.handicap }}) 
