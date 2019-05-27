@@ -11,7 +11,7 @@ class Golfer(models.Model):
     email = models.CharField(max_length=100, null=True)
     handicap = models.IntegerField(default=0)
     def __str__(self):
-        return format(self.first_name + " " + self.last_name)
+    	return format(self.first_name + " " + self.last_name)
     
 class Course(models.Model):
     course_name = models.CharField(max_length=50)
@@ -87,8 +87,8 @@ class Course(models.Model):
         ordering = ['course_name']
 
 class Score(models.Model):
-    golfer = models.ForeignKey(Golfer)
-    course = models.ForeignKey(Course)
+    golfer = models.ForeignKey(Golfer,on_delete=models.CASCADE)
+    course = models.ForeignKey(Course,on_delete=models.CASCADE)
     par1 = models.IntegerField(default=4)
     par2 = models.IntegerField(default=4)
     par3 = models.IntegerField(default=4)
@@ -127,7 +127,7 @@ class Score(models.Model):
         return format(self.course.course_name + ": " + self.golfer.first_name + " " + self.golfer.last_name + " " + self.play_date.strftime('%m/%d/%Y'))
 
 class Champs(models.Model):
-    golfer = models.ForeignKey(Golfer)
+    golfer = models.ForeignKey(Golfer,on_delete=models.CASCADE)
     year   = models.CharField (max_length=5)
     
     def __str__(self):
@@ -137,18 +137,17 @@ class Champs(models.Model):
     
 
 class HoleInOne(models.Model):
-    golfer = models.ForeignKey(Golfer)
-    course = models.ForeignKey(Course)
+    golfer = models.ForeignKey(Golfer,on_delete=models.CASCADE)
+    course = models.ForeignKey(Course,on_delete=models.CASCADE)
     hole   = models.IntegerField(blank=True, null=True)
     yards  = models.IntegerField(blank=True, null=True)
     club   = models.CharField(max_length=20, null=True)
     play_date = models.DateField('date published', null=True)
-    
     def __str__(self):
         return format(self.golfer.first_name + " " + self.golfer.last_name)
 
 class GolferStats(models.Model):
-    golfer = models.ForeignKey(Golfer)
+    golfer = models.ForeignKey(Golfer,on_delete=models.CASCADE)
     par3_avg = models.FloatField(default=0)
     par4_avg = models.FloatField(default=0)
     par5_avg = models.FloatField(default=0)

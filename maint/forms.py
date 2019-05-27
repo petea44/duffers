@@ -13,7 +13,7 @@ class ScoreForm(forms.ModelForm):
         ('N', 'No'),
     )
     hcap = forms.ChoiceField([('Y','Yes'),('N','No')])
-    play_date=forms.DateField(input_formats=['%Y%m%d'],initial=datetime.datetime.now().strftime('%Y-%m-%d') )
+    play_date=forms.DateField(input_formats=['%Y%m%d'],initial=datetime.datetime.today().strftime('%Y-%m-%d') )
 class HolesForm(forms.ModelForm):
     class Meta:
         model = Score
